@@ -49,7 +49,7 @@
 					
 					<tr>
 						<td> <label></label></td>
-						<td><input type ="submit" value="Save" class="save" /></td>
+						<td><input type ="submit" value="Save" class="save" style="width: 65px; "/></td>
 					</tr>
 				</tbody>
 			</table>

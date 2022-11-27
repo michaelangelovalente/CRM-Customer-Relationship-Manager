@@ -24,13 +24,16 @@ public class CustomerController {
 	private CustomerService customerService;
 	
 	@GetMapping("/list")
-	public String listCustomer(Model theModel) {
+	public String listCustomer(Model theModel/*, Model theModel2*/) {
 		
 		//get customers from the service
 		List<Customer> theCustomers = customerService.getCustomers();
+//		Customer customer = new Customer();
 		
 		// add the customers to the model
 		theModel.addAttribute("customers",theCustomers);
+		
+//		theModel2.addAttribute("customer", customer );
 		
 		return "list-customers";
 	}
@@ -77,6 +80,19 @@ public class CustomerController {
 		customerService.deleteCustomer(theId);
 		
 		return "redirect:/customer/list";
+	}
+	
+	@GetMapping("/search")
+	public String searchCustomers(@RequestParam("theSearchName") String theSearchName,
+			Model theModel) {
+		
+		// search customers from the service
+		List<Customer> theCustomers = customerService.searchCustomers(theSearchName);
+		
+		theModel.addAttribute("customers", theCustomers);
+		System.out.println(theCustomers);
+		
+		return "list-customers";
 	}
 	
 	
